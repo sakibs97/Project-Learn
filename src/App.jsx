@@ -1,6 +1,9 @@
+import Community from "./components/Community"
+import Footer from "./components/Footer"
 import Hero from "./components/Hero"
 import Leaning from "./components/Leaning"
 import Service from "./components/Service"
+import Subscribe from "./components/Subscribe"
 
 
 const App = () => {
@@ -9,6 +12,9 @@ const App = () => {
       <Hero />
       <Service />
       <Leaning />
+      <Subscribe />
+      <Community />
+      <Footer />
     </main>
   )
 }
