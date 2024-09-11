@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-
+import { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 
 
 const NavbarManu = [
@@ -31,6 +33,12 @@ const NavbarManu = [
 ];
 
 const Navbar = () => {
+    let [show, setShow] = useState(false);
+
+    let handelShow = () => {
+        setShow(!show);
+    };
+
     return (
         <nav className="relative z-20">
             <motion.div
@@ -42,8 +50,9 @@ const Navbar = () => {
                     <h1 className="font-lato text-2xl">Let's Start</h1>
                 </div>
                 {/* Menu Part */}
-                <div className="hidden lg:block">
-                    <ul className="flex items-center gap-3">
+                <div className=''>
+                    <ul className={`lg:flex items-center lg:static gap-3 absolute lg:bg-none ${show ? "bg-light border shadow-md rounded-lg text-center top-[35px] right-2 pt-8 px-4 pb-5 ease-in-out duration-500 bg-opacity-100"
+                        : "left-[-10000px] top-[140px]"}`}>
                         {NavbarManu.map((menu) => (
                             <li key={menu.id}>
                                 <a href={menu.path}
@@ -53,8 +62,17 @@ const Navbar = () => {
                                     {menu.title}</a>
                             </li>
                         ))}
-                        <button className="primary-btn">Sign In</button>
+                        <button className="primary-btn lg:mt-0 mt-3">Sign In</button>
                     </ul>
+                </div>
+                <div onClick={handelShow} className="lg:hidden z-20">
+                    {show ? (
+                        <RxCross2 className="w-8 h-8" />
+                    ) : (
+                        <FaBars className="w-8 h-8" />
+                    )}
+
+
                 </div>
             </motion.div>
         </nav>
